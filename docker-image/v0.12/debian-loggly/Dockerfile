@@ -7,6 +7,7 @@ MAINTAINER Eduardo Silva <eduardo@treasure-data.com>
 USER root
 WORKDIR /home/fluent
 ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
+ARG CUSTOM_GEM_SERVER
 
 RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
      && apt-get update \
@@ -15,6 +16,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
      -y --no-install-recommends \
      $buildDeps \
     && echo 'gem: --no-document' >> /etc/gemrc \
+    && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
     && gem install fluent-plugin-loggly \

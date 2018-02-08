@@ -7,6 +7,7 @@ MAINTAINER Eduardo Silva <eduardo@treasure-data.com>
 USER root
 WORKDIR /home/fluent
 ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
+ARG CUSTOM_GEM_SERVER
 
 RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
      && apt-get update \
@@ -15,10 +16,12 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
      -y --no-install-recommends \
      $buildDeps \
     && echo 'gem: --no-document' >> /etc/gemrc \
+    && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
     && gem install aws-sdk-core -v 2.10.50 \
-    && gem install fluent-plugin-cloudwatch-logs -v 0.4.0 \
+    && gem install pfpt-fluent-plugin-cloudwatch-logs -v 0.4.5 \
+    && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
     && gem install fluent-plugin-kubernetes_metadata_filter \
     && gem install ffi \
     && gem install fluent-plugin-systemd -v 0.0.8 \
