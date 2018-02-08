@@ -6,6 +6,7 @@ MAINTAINER Eduardo Silva <eduardo@treasure-data.com>
 USER root
 WORKDIR /home/fluent
 ENV PATH /home/fluent/.gem/ruby/2.3.0/bin:$PATH
+ENV CUSTOM_GEM_SERVER
 
 RUN set -ex \
     && apk update && apk upgrade \
@@ -14,6 +15,7 @@ RUN set -ex \
         ruby-dev \
         libffi-dev \
     && echo 'gem: --no-document' >> /etc/gemrc \
+    && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
     && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
