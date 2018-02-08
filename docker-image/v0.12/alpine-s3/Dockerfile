@@ -18,7 +18,6 @@ RUN set -ex \
     && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
-    && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
     && gem install fluent-plugin-s3 -v "~> 0.8" \
     && gem install fluent-plugin-kubernetes_metadata_filter \
     && apk del .build-deps \
