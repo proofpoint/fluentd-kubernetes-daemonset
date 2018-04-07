@@ -18,6 +18,7 @@ RUN set -ex \
     && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
+    && gem install fluent-plugin-prometheus -v 0.4.0 \
     && gem install fluent-plugin-elasticsearch \
     && gem install fluent-plugin-kubernetes_metadata_filter \
     && apk del .build-deps \
@@ -27,6 +28,7 @@ RUN set -ex \
 # Copy configuration files
 COPY ./conf/fluent.conf /fluentd/etc/
 COPY ./conf/kubernetes.conf /fluentd/etc/
+COPY ./conf/prometheus.conf /fluentd/etc/
 
 # Copy plugins
 COPY plugins /fluentd/plugins/

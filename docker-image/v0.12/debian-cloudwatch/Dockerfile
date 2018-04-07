@@ -19,6 +19,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
     && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
+    && gem install fluent-plugin-prometheus -v 0.4.0 \
     && gem install aws-sdk-core -v 2.10.50 \
     && gem install pfpt-fluent-plugin-cloudwatch-logs -v 0.4.5 \
     && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
@@ -37,6 +38,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
 COPY ./conf/fluent.conf /fluentd/etc/
 COPY ./conf/systemd.conf /fluentd/etc/
 COPY ./conf/kubernetes.conf /fluentd/etc/
+COPY ./conf/prometheus.conf /fluentd/etc/
 
 # Copy plugins
 COPY plugins /fluentd/plugins/
