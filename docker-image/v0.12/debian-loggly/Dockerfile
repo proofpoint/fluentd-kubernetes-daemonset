@@ -19,6 +19,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
     && (gem sources -a $CUSTOM_GEM_SERVER 2> /dev/null || true ) \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
+    && gem install fluent-plugin-prometheus -v 0.4.0 \
     && gem install fluent-plugin-loggly \
     && gem install fluent-plugin-kubernetes_metadata_filter \
     && gem install ffi \
@@ -35,6 +36,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
 COPY ./conf/fluent.conf /fluentd/etc/
 COPY ./conf/systemd.conf /fluentd/etc/
 COPY ./conf/kubernetes.conf /fluentd/etc/
+COPY ./conf/prometheus.conf /fluentd/etc/
 
 # Copy plugins
 COPY plugins /fluentd/plugins/
