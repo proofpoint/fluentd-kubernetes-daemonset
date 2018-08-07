@@ -54,4 +54,4 @@ ENV FLUENTD_CONF="fluent.conf"
 #ENV LD_PRELOAD="/usr/lib/libjemalloc.so.2"
 
 # Run Fluentd
-CMD ["/fluentd/entrypoint.sh"]
+CMD fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins ${FLUENTD_OPT}
