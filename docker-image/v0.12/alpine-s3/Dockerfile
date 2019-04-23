@@ -19,7 +19,7 @@ RUN set -ex \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
     && gem install fluent-plugin-prometheus -v 0.4.0 \
-    && gem install fluent-plugin-splunk-hec \
+    && gem install fluent-plugin-splunk-hec -v 1.1.0 \
     && gem install fluent-plugin-s3 -v "~> 0.8" \
     && gem install fluent-plugin-kubernetes_metadata_filter \
     && apk del .build-deps \
