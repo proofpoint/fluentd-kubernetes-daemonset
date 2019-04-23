@@ -20,10 +20,11 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
     && gem install fluent-plugin-prometheus -v 0.4.0 \
+    && gem install fluent-plugin-splunk-hec \
     && gem install aws-sdk-core -v 2.10.50 \
     && gem install fluent-plugin-cloudwatch-logs -v 0.4.5 \
     && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
-    && gem install fluent-plugin-kubernetes_metadata_filter -v 1.0.1 \
+    && gem install fluent-plugin-kubernetes_metadata_filter \
     && gem install ffi \
     && gem install fluent-plugin-systemd -v 0.0.8 \
     && SUDO_FORCE_REMOVE=yes \
