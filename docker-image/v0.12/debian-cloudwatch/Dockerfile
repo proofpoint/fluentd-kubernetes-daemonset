@@ -20,7 +20,6 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev" \
     && gem install fluent-plugin-secure-forward \
     && gem install fluent-plugin-record-reformer \
     && gem install fluent-plugin-prometheus -v 0.4.0 \
-    && gem install fluent-plugin-splunk-hec -v 1.1.0 \
     && gem install aws-sdk-core -v 2.10.50 \
     && gem install fluent-plugin-cloudwatch-logs -v 0.4.5 \
     && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
