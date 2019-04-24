@@ -21,7 +21,7 @@ RUN set -ex \
     && gem install fluent-plugin-prometheus -v 0.4.0 \
     && gem install fluent-plugin-splunk-hec -v 1.1.0 \
     && gem install fluent-plugin-s3 -v "~> 0.8" \
-    && gem install fluent-plugin-kubernetes_metadata_filter \
+    && gem install fluent-plugin-kubernetes_metadata_filter -v 1.0.1 \
     && apk del .build-deps \
     && gem sources --clear-all \
     && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
