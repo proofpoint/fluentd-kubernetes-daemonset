@@ -23,7 +23,7 @@ RUN set -ex \
     && gem install aws-sdk-core -v 2.10.50 \
     && gem install fluent-plugin-cloudwatch-logs -v 0.4.5 \
     && gem install fluent-plugin-detect-exceptions -v 0.0.9 \
-    && gem install fluent-plugin-kubernetes_metadata_filter \
+    && gem install fluent-plugin-kubernetes_metadata_filter -v 1.0.1 \
     && apk del .build-deps \
     && gem sources --clear-all \
     && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
